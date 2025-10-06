@@ -2,13 +2,13 @@ import random
 import statistics
 
 def ejercicio1():
-    n = int(input("Ingrese la cantidad de elementos del arreglo: "))
-    arreglo_original = [random.randint(1, 100) for _ in range(n)]
-    arreglo = arreglo_original[:]  # Copia para no perder el original
+    n = int(input("Ingrese la cantidad de elementos de la lista: "))
+    lista_original = [random.randint(1, 100) for _ in range(n)]
+    Lista = lista_original[:]  # Copia de la lista original
     
     while True:
         print("\n--- MENÚ ---")
-        print("a. Imprimir arreglo original")
+        print("a. Imprimir lista original")
         print("b. Suma")
         print("c. Promedio")
         print("d. Mayor")
@@ -23,29 +23,35 @@ def ejercicio1():
         opcion = input("Seleccione una opción: ").lower()
         
         if opcion == "a":
-            print("Arreglo original:", arreglo_original)
+            print("Lista original:", lista_original)
+            #Aqui se esta desarrolando un metodo de suma que realiza la suma de los numero dentro de la lista
         elif opcion == "b":
-            print("Suma:", sum(arreglo_original))
+            print("Suma:", sum(lista_original))
         elif opcion == "c":
-            print("Promedio:", sum(arreglo_original) / len(arreglo_original))
+            print("Promedio:", sum(lista_original) / len(lista_original))
+            #Aqui se esta desarrolando un metodo de max donde ayuda a encontrar dentro de la lista el numero mayor 
         elif opcion == "d":
-            print("Mayor:", max(arreglo_original))
+            print("Mayor:", max(lista_original))
         elif opcion == "e":
-            print("Menor:", min(arreglo_original))
+            #Aqui se esta desarrolando un metodo de min donde ayuda a encontrar dentro de la lista el numero menor
+            print("Menor:", min(lista_original))
         elif opcion == "f":
-            print("Orden ascendente:", sorted(arreglo_original))
+            print("Orden ascendente:", sorted(lista_original))
         elif opcion == "g":
-            print("Orden descendente:", sorted(arreglo_original, reverse=True))
+            print("Orden descendente:", sorted(lista_original, reverse=True))
         elif opcion == "h":
             try:
-                print("Moda:", statistics.mode(arreglo_original))
+                print("Moda:", statistics.mode(lista_original))
             except statistics.StatisticsError:
-                print("No hay moda (todos diferentes o multimodal).")
+                print("No hay moda (todos son diferentes).")
         elif opcion == "i":
-            print("Mediana:", statistics.median(arreglo_original))
+            print("Mediana:", statistics.median(lista_original))
         elif opcion == "j":
             num = int(input("Ingrese el número a buscar: "))
-            posiciones = [i for i, x in enumerate(arreglo_original) if x == num]
+            # la lista de la parte inferior usa indexación desde 0, ya que esta busca un número en donde su posicion em pieza en 0.
+            #Además es una lista de compresión, ya que esta desarrollando en una sola linea de código con la expresion dentro de los corchetes
+            #Asi mismo se esta utilizando una iteracion, ya que esta recorriendo cada uno de sus elementos 
+            posiciones = [i for i, x in enumerate(lista_original) if x == num]
             if posiciones:
                 print(f"Número {num} encontrado en posiciones {posiciones}, total: {len(posiciones)} veces.")
             else:
