@@ -1,0 +1,39 @@
+class Nodo:
+    def __init__(self, dato):
+        self.dato = dato
+        self.siguiente = None
+
+class ListaCircular:
+    def __init__(self):
+        self.cabeza = None
+
+    def agregar(self, dato):
+        nuevo = Nodo(dato)
+        if not self.cabeza:
+            self.cabeza = nuevo
+            nuevo.siguiente = self.cabeza  # Se enlaza consigo mismo
+        else:
+            temp = self.cabeza
+            while temp.siguiente != self.cabeza:
+                temp = temp.siguiente
+            temp.siguiente = nuevo
+            nuevo.siguiente = self.cabeza  # Se cierra el ciclo
+
+    def mostrar(self):
+        if not self.cabeza:
+            print("La lista está vacía")
+            return
+        temp = self.cabeza
+        while True:
+            print(temp.dato, end=" → ")
+            temp = temp.siguiente
+            if temp == self.cabeza:
+                break
+        print("↩ (vuelve al inicio)")
+
+# Ejemplo de uso
+lista = ListaCircular()
+lista.agregar(10)
+lista.agregar(20)
+lista.agregar(30)
+lista.mostrar()
